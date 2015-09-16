@@ -1,0 +1,80 @@
+{
+    "properties": {
+        "graphite_url": {
+            "type": "string"
+        },
+        "graphite_auth": {
+            "type": "string"
+        },
+        "include": {
+            "type": "array"
+        },
+        "interval": {
+            "type": "integer"
+        },
+        "log_file": {
+            "type": "string"
+        },
+        "log_level": {
+            "type": "string"
+        },
+        "outputs": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^\\w+$": {
+                    "properties": {
+                        "output": {
+                            "type": "string"
+                        },
+                        "params": {
+                            "type": "object"
+                        }
+                    },
+                    "required": [
+                        "output",
+                        "params"
+                    ],
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "queries": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^\\w+$": {
+                    "properties": {
+                        "query": {
+                            "type": "string"
+                        },
+                        "from": {
+                            "type": "string"
+                        },
+                        "until": {
+                            "type": "string"
+                        },
+                        "interval": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "query",
+                        "from",
+                        "until"
+                    ],
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "required": [
+        "graphite_url",
+        "log_file",
+        "log_level",
+        "interval",
+        "queries",
+        "outputs",
+        "include"
+    ]
+}

@@ -1,0 +1,34 @@
+/**
+ * example config
+ */
+{
+    "graphite_url": "http://graphite.example.com:8080",
+    "graphite_auth": "user:password",
+
+    "interval": 60000,
+    "log_file": "/var/log/graphout/graphout.log",
+    "log_level": "info",
+
+    "queries":
+    {
+        "go_carbon_updateOperations":
+        {
+            "query": "sumSeries(carbon.agents.*.persister.updateOperations)",
+            "from": "-1min",
+            "until": "now"
+        }
+    },
+
+    "outputs":
+    {
+        "logfile":
+        {
+            "output": "./logoutput",
+            "params": {
+                "path": "/tmp/logoutput.log"
+            }
+        }
+    },
+
+    "include": ["example*.json"]
+}
