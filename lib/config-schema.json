@@ -10,7 +10,8 @@
             "type": "array"
         },
         "interval": {
-            "type": "integer"
+            "type": "integer",
+            "minimum": 10000
         },
         "log_file": {
             "type": "string"
