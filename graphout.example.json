@@ -5,9 +5,12 @@
     "graphite_url": "http://graphite.example.com:8080",
     "graphite_auth": "user:password",
 
-    "interval": 60000,
     "log_file": "/var/log/graphout/graphout.log",
     "log_level": "info",
+
+    "interval": 60,     // query interval (in seconds)
+    "splay": false,     // delay each query by consistent random of seconds
+                        // if enabled, delay between 1 second and the query interval
 
     "queries":
     {

@@ -9,15 +9,18 @@
         "include": {
             "type": "array"
         },
-        "interval": {
-            "type": "integer",
-            "minimum": 10000
-        },
         "log_file": {
             "type": "string"
         },
         "log_level": {
             "type": "string"
+        },
+        "interval": {
+            "type": "integer",
+            "minimum": 10
+        },
+        "splay": {
+            "type": ["boolean"]
         },
         "outputs": {
             "additionalProperties": false,
@@ -74,6 +77,7 @@
         "log_file",
         "log_level",
         "interval",
+        "splay",
         "queries",
         "outputs",
         "include"
