@@ -4,10 +4,8 @@
   "license": "MIT",
   "name": "graphout",
   "repository": "shamil/graphout",
-  "version": "0.1.0",
-  "files": [
-    "graphout.example.json"
-  ],
+  "version": "0.1.2",
+
   "dependencies": {
     "bristol": "~0.3.2",
     "cjson": "~0.3.1",
@@ -15,9 +13,12 @@
     "jsonschema": "~1.0.2",
     "minimist": "~1.2.0"
   },
+
   "devDependencies": {},
+
   "preferGlobal": true,
   "bin": "index.js",
+
   "engines": {
     "node": "~0.12.0"
   }
