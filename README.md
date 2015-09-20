@@ -60,8 +60,9 @@ Second, change the config to meet your graphite settings, then you can run graph
 
 **Result**
 
-If all good, you should at least see data goes file written by the `logoutput` module.
-If not, enable debug in config or post your issues and I'll try to help you getting started.
+If all good, you should at least see data goes to a file (`/tmp/logoutput.log`) written
+by the `logoutput` module. If not, try debug `log_level` in config or post your issues
+and I'll try to help you getting started.
 
 ### License
 
