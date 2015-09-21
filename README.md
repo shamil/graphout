@@ -3,9 +3,7 @@
 Graphout lets you forward `Graphite` based queries (using the render API) out to different external services.
 
 ```
-DISCLAIMER:
-
-The project still in beta stage, be carefull when you use it in production!
+The project still in ALPHA stage, be carefull when you use it in production!
 Submit issues and/or suggestions. Pull requests are always welcome.
 ```
 
@@ -23,8 +21,8 @@ For those reasons I decided that I need something that can answer the above ques
 ### What's done
 
 - The intended flow works as designed/planned
-- A simple output module, that outputs to log file
-- A zabbix output module, that outputs to zabbix server (as separate module)
+- A simple output module, that outputs to log file (embedded)
+- A zabbix output module, that outputs to zabbix server ([as separate module](https://github.com/shamil/graphout-output-zabbix))
 
 ### TODO
 
@@ -32,6 +30,7 @@ For those reasons I decided that I need something that can answer the above ques
 - Create Cloudwatch module
 - Create Upstart and Systemd service scripts
 - Allow set interval per query
+- Replace logger libary with one that supports child loggers
 - Nice to have: add option in outputs configuration to filter queries
 
 ### How to install run?
