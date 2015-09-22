@@ -8,13 +8,19 @@ var Fs        = require('fs'),
     Graphout  = require('./lib/graphout'),
 
 argv = ParseArgs(process.argv.slice(2), {
-    boolean: 'help',
+    boolean: ['help', 'version'],
     alias: {config: 'c', pid: 'p', help: 'h'}
 });
 
 // print help & exit
 if (argv.help) {
     console.log("usage:", process.title, "--config <config-path> --pid <pid-path>");
+    process.exit(0);
+}
+
+// print help & exit
+if (argv.version) {
+    console.log("%s - v%s", process.title, require('./package').version);
     process.exit(0);
 }
 
