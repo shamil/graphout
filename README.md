@@ -30,8 +30,9 @@ For those reasons I decided that I need something that can answer the above ques
 - Create Cloudwatch module
 - Create Upstart and Systemd service scripts
 - Allow set interval per query
-- Replace logger libary with one that supports child loggers
+- Replace logger libary with one that supports child loggers - **DONE**, based on the same logger
 - Nice to have: add option in outputs configuration to filter queries
+- Nice to have: prepare a `puppet` module
 
 ### How to install run?
 
