@@ -14,7 +14,7 @@
 
     "queries":
     {
-        "go_carbon_updateOperations":
+        "go-carbon.updateOperations":
         {
             "query": "sumSeries(carbon.agents.*.persister.updateOperations)",
             "from": "-1min",

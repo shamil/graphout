@@ -18,7 +18,7 @@ if (argv.help) {
     process.exit(0);
 }
 
-// print help & exit
+// print version & exit
 if (argv.version) {
     console.log("%s - v%s", process.title, require('./package').version);
     process.exit(0);

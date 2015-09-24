@@ -25,7 +25,7 @@
         "outputs": {
             "additionalProperties": false,
             "patternProperties": {
-                "^\\w+$": {
+                "^[\\w.-]+$": {
                     "properties": {
                         "output": {
                             "type": "string"
@@ -46,7 +46,7 @@
         "queries": {
             "additionalProperties": false,
             "patternProperties": {
-                "^\\w+$": {
+                "^[\\w.-]+$": {
                     "properties": {
                         "query": {
                             "type": "string"
