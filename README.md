@@ -22,15 +22,15 @@ For those reasons I decided that I need something that can answer the above ques
 
 - The intended flow works as designed/planned
 - A simple output module, that outputs to log file (embedded)
-- A zabbix output module, that outputs to zabbix server ([as separate module](https://github.com/shamil/graphout-output-zabbix))
+- A CloudWatch output module, ([as separate module](https://github.com/shamil/graphout-output-cloudwatch))
+- A Zabbix output module, that outputs to zabbix server ([as separate module](https://github.com/shamil/graphout-output-zabbix))
 
 ### TODO
 
 - Complete README (for now, read sources)
-- Create Cloudwatch module
 - Create Upstart and Systemd service scripts
 - Allow set interval per query
-- Replace logger libary with one that supports child loggers - **DONE**, based on the same logger
+- Write unit tests
 - Nice to have: add option in outputs configuration to filter queries
 - Nice to have: prepare a `puppet` module
 
@@ -61,7 +61,7 @@ Second, change the config to meet your graphite settings, then you can run graph
 **Result**
 
 If all good, you should at least see data goes to a file (`/tmp/logoutput.log`) written
-by the `logoutput` module. If not, try debug `log_level` in config or post your issues
+by the `logoutput` module. If not, try to set `log_level` to `debug` in config or post your issues
 and I'll try to help you getting started.
 
 ### License
