@@ -40,6 +40,7 @@ So, I decided that I need something that can answer the above questions.
 Configuration is a typical `JSON` files, with one addition that you can have comemnts in it.
 Also you can include configuration files from master config. See `include` option.
 The configuration file(s) validated using JSON schema, so invalid configuration properties will cause Graphout to exit immediately.
+Read the [schema](https://raw.githubusercontent.com/shamil/graphout/master/lib/config-schema.json) for the accepted configuration format.
 
 **Minimal configuration**
 
@@ -112,17 +113,17 @@ Each `include` element can have `glob` based wildcards.
 Example:
 
 ```json
-include: ["/etc/graphout/conf.d/*.json", "/etc/graphout/example.json"]
+"include": ["/etc/graphout/conf.d/*.json", "/etc/graphout/example.json"]
 ```
 
 **`queries`**
 
-Queriy objects, accepted by [Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html#json).
+Queriy objects, accepted by the [Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html#json).
 
 The format is:
 
 ```javascript
-// unique query-name 
+// Alphanumeric unique query name, with dots and hyphens allowed.
 "go-carbon.updateOperations":
 {
     // the graphite target
@@ -134,18 +135,19 @@ The format is:
     // relative or absolute time period
     "until": "now",
 
-    // the calulation method of the received Graphite data
+    // the calculation method of the received Graphite data
     // available methods: "avg", "min", "max"
     // default: "avg"
     "calculation": "avg"
 }
 ```
 
-For more information about the `query` (target), `from` and `until` options, read the Graphite Render URL API manual. 
+For more information about the `query` (target), `from` and `until` options, read the
+[Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html) manual. 
 
 Note that, Graphout uses the [**`maxDataPoints`**](http://graphite.readthedocs.org/en/latest/render_api.html#maxdatapoints) API option,
-to return 60 consolidated data points at most. The `maxDataPoints` option available since Graphite 0.9.13.
-So it's best that you have the latest version of Graphite-Web.
+to return `60` consolidated data points at most. The `maxDataPoints` option available since Graphite 0.9.13.
+So it's best that you have the latest version of `graphite-web`.
 
 **`outputs`**
 
@@ -153,7 +155,7 @@ Output objects. The format is:
 
 ```javascript
 
-// Alphanumeric output name, with dots and hypens allowed as well
+// Alphanumeric unique output name
 "logfile":
 {
     // ouput module name, Graphaut will use "require" to load the module
@@ -205,7 +207,7 @@ node's install root.
 **Result**
 
 If all good, you should at least see data goes to a file (`/tmp/logoutput.log`) written
-by the `logoutput` module. If not, try to set `log_level` to `debug` in config or post your issues
+by the `logoutput` module. If not, try to set `log_level` to `debug` in configuration or post your issues
 and I'll try to help you getting started.
 
 ### Internal architecture
