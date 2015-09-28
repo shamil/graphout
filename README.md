@@ -112,7 +112,7 @@ Each `include` element can have `glob` based wildcards.
 Example:
 
 ```json
-include: ['/etc/graphout/conf.d/*.json', '/etc/graphout/example.json']
+include: ["/etc/graphout/conf.d/*.json", "/etc/graphout/example.json"]
 ```
 
 **`queries`**
