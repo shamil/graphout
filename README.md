@@ -104,6 +104,17 @@ Available levels are: `error`, `warn`, `info` and  `debug`.
 Delay each query by consistent random of seconds.
 If enabled, delay between 1 second and the query interval.
 
+**`include`**
+
+The `include` option is a list of configuration files to load. The files are loaded and merged in the specified order.
+Each `include` element can have `glob` based wildcards.
+
+Example:
+
+```json
+include: ['/etc/graphout/conf.d/*.json', '/etc/graphout/example.json']
+```
+
 **`queries`**
 
 Queriy objects, accepted by [Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html#json).
@@ -130,7 +141,7 @@ The format is:
 }
 ```
 
-For more info read the Graphite Render URL API manual. 
+For more information about the `query` (target), `from` and `until` options, read the Graphite Render URL API manual. 
 
 Note that, Graphout uses the [**`maxDataPoints`**](http://graphite.readthedocs.org/en/latest/render_api.html#maxdatapoints) API option,
 to return 60 consolidated data points at most. The `maxDataPoints` option available since Graphite 0.9.13.
@@ -158,7 +169,7 @@ Output objects. The format is:
 ### Outputs
 
 Each output is a Node.js module. The only exception is a built-in `logoutput` output, which is part of this project.
-The other currently available outputs are `Zabbix` and 'CloudWatch', they are separate Node.js packages. Those outputs are dependencies
+The other currently available outputs are `Zabbix` and `CloudWatch`, they are separate Node.js packages. Those outputs are dependencies
 of this project, so they're installed automatically when you install **Graphout**.
 
 **`logoutput`**
@@ -183,11 +194,11 @@ Other outputs documentation:
 
 **Run**
 
-First, copy the example `graphout.example.json` configuration file to `/etc/graphout/graphout.json`.
-The example file, should be located in node 'lib/node_modules/graphout' directory, relative to the 
+*First*, copy the example `graphout.example.json` configuration file to `/etc/graphout/graphout.json`.
+The example file, should be located in node `lib/node_modules/graphout` directory, relative to the 
 node's install root.
 
-Second, change the config to meet your graphite settings, then you can run graphout...
+*Second*, change the config to meet your graphite settings, then you can run graphout...
 
     # graphout --pid /tmp/graphout.pid --config /etc/graphout/graphout.json
 
