@@ -28,7 +28,7 @@ So, I decided that I need something that can answer the above questions.
 
 ### TODO
 
-- Complete README (for now, read sources)
+- Complete README
 - Create Upstart and Systemd service scripts
 - Allow set interval per query
 - Write unit tests
@@ -75,9 +75,102 @@ The configuration file(s) validated using JSON schema, so invalid configuration 
 }
 ```
 
-### How to install run?
+**Available configuration options**
 
-> **This is incomplete quick and dirty getting started guide, the README file updated frequently until it fully completed**
+**`graphite_url`**
+
+URL to the graphite-web. The option must conform to the `URI` format.
+
+**`graphite_auth`**
+
+HTTP basic authentication option in `<username>:<password>` format
+
+**`interval`**
+
+Query interval in seconds, default is 60 seconds
+
+**`log_file`**
+
+Full path to the log file, default is `/var/log/graphout/graphout.log`.
+Set this to `/dev/stdout` to print to console.
+
+**`log_level`**
+
+Minimal log level that will be printed, default is `info`.
+Available levels are: `error`, `warn`, `info` and  `debug`.
+
+**`splay`**
+
+Delay each query by consistent random of seconds.
+If enabled, delay between 1 second and the query interval.
+
+**`queries`**
+
+Queriy objects, accepted by [Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html#json).
+
+The format is:
+
+```javascript
+// unique query-name 
+"go-carbon.updateOperations":
+{
+    // the graphite target
+    "query": "sumSeries(carbon.agents.*.persister.updateOperations)",
+
+    // relative or absolute time period
+    "from": "-1min",
+
+    // relative or absolute time period
+    "until": "now",
+
+    // the calulation method of the received Graphite data
+    // available methods: "avg", "min", "max"
+    // default: "avg"
+    "calculation": "avg"
+}
+```
+
+For more info read the Graphite Render URL API manual. 
+
+Note that, Graphout uses the [**`maxDataPoints`**](http://graphite.readthedocs.org/en/latest/render_api.html#maxdatapoints) API option,
+to return 60 consolidated data points at most. The `maxDataPoints` option available since Graphite 0.9.13.
+So it's best that you have the latest version of Graphite-Web.
+
+**`outputs`**
+
+Output objects. The format is:
+
+```javascript
+
+// Alphanumeric output name, with dots and hypens allowed as well
+"logfile":
+{
+    // ouput module name, Graphaut will use "require" to load the module
+    "output": "./logoutput",
+
+    // "params" properties are dependant on the "output" type (module)
+    "params": {
+        "path": "/tmp/logoutput.log"
+    }
+}
+```
+
+### Outputs
+
+Each output is a Node.js module. The only exception is a built-in `logoutput` output, which is part of this project.
+The other currently available outputs are `Zabbix` and 'CloudWatch', they are separate Node.js packages. Those outputs are dependencies
+of this project, so they're installed automatically when you install **Graphout**.
+
+**`logoutput`**
+
+The only param for this output is `path`, to the log file where all queries results will be written to.
+
+Other outputs documentation:
+
+- [Zabbix](https://github.com/shamil/graphout-output-zabbix) output
+- [CloudWatch](https://github.com/shamil/graphout-output-cloudwatch) output
+
+### How to install, and run?
 
 **Install**
 
@@ -97,7 +190,6 @@ node's install root.
 Second, change the config to meet your graphite settings, then you can run graphout...
 
     # graphout --pid /tmp/graphout.pid --config /etc/graphout/graphout.json
-
 
 **Result**
 
