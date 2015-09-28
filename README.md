@@ -18,6 +18,10 @@ to get this data out of Graphite to some external tool or service.
 For those reasons I decided that I need something that can answer the above questions.
 **This is how Graphout was born.**
 
+### Internal architecture
+
+![dagram](https://raw.githubusercontent.com/shamil/graphout/master/diagram.png)
+
 ### What's done
 
 - The intended flow works as designed/planned
