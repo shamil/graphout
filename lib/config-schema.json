@@ -1,7 +1,8 @@
 {
     "properties": {
         "graphite_url": {
-            "type": "string"
+            "type": "string",
+            "format": "uri"
         },
         "graphite_auth": {
             "type": "string"
@@ -9,18 +10,19 @@
         "include": {
             "type": "array"
         },
+        "interval": {
+            "minimum": 10,
+            "type": "integer"
+        },
         "log_file": {
-            "type": "string"
+            "type": "string",
+            "enum": ["error", "warn", "info", "debug"]
         },
         "log_level": {
             "type": "string"
         },
-        "interval": {
-            "type": "integer",
-            "minimum": 10
-        },
         "splay": {
-            "type": ["boolean"]
+            "type": "boolean"
         },
         "outputs": {
             "additionalProperties": false,
@@ -50,20 +52,20 @@
             "patternProperties": {
                 "^[\\w.-]+$": {
                     "properties": {
-                        "query": {
-                            "type": "string"
-                        },
-                        "from": {
-                            "type": "string"
-                        },
-                        "until": {
-                            "type": "string"
-                        },
                         "calculation": {
                             "type": "string",
                             "enum": ["avg", "min", "max"]
                         },
+                        "from": {
+                            "type": "string"
+                        },
                         "interval": {
+                            "type": "integer"
+                        },
+                        "query": {
+                            "type": "string"
+                        },
+                        "until": {
                             "type": "string"
                         }
                     },
