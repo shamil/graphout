@@ -24,6 +24,7 @@
         },
         "outputs": {
             "additionalProperties": false,
+            "minProperties": 1,
             "patternProperties": {
                 "^[\\w.-]+$": {
                     "properties": {
@@ -45,6 +46,7 @@
         },
         "queries": {
             "additionalProperties": false,
+            "minProperties": 1,
             "patternProperties": {
                 "^[\\w.-]+$": {
                     "properties": {
