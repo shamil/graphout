@@ -1,3 +1,5 @@
+[![NPM](https://nodei.co/npm/graphout.png)](https://www.npmjs.com/package/graphout)
+
 ### What is Graphout
 
 Graphout lets you forward `Graphite` based queries (using the render API) out to different external services.
