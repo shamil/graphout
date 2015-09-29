@@ -9,7 +9,7 @@ Submit issues and/or suggestions. Pull requests are always welcome.
 
 ### Why?
 
-Graphite collects metrics, this is very cool, but how can I make use of those metrics? And not just
+Graphite collects metrics, this is very cool, but how can I make use of these metrics? And not just
 for visualising them. What if I have a central monitoring system like `Zabbix`, that responsible to
 send alerts, and I want to alert based on `Graphite` data? Or what if I want to do AWS Auto-scaling
 based on graphite data? How can I get this data into CloudWatch? I'm sure you have your own reasons
@@ -53,7 +53,9 @@ So, I decided that I need something that can answer the above questions.
 3. make sure the Example query will work on yhour environment, if not change it.
 4. *Now*, you can run **Graphout**
 
-    # graphout --pid /tmp/graphout.pid --config /etc/graphout/graphout.json
+```shell
+graphout --pid /tmp/graphout.pid --config /etc/graphout/graphout.json
+```
 
 **Result**
 
