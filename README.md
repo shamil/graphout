@@ -39,27 +39,26 @@ So, I decided that I need something that can answer the above questions.
 
 **Install**
 
-    # npm install -g graphout
+    # npm install --global graphout
 
 **Usage**
 
     # graphout --help
-    usage: graphout --config <config-path> --pid <pid-path>
+    usage: graphout --config <config-path> --pid <pid-path> [-v]
 
 **Run**
 
-*First*, copy the example `graphout.example.json` configuration file to `/etc/graphout/graphout.json`.
-The example file, should be located in node `lib/node_modules/graphout` directory, relative to the 
-node's install root.
-
-*Second*, change the config to meet your graphite settings, then you can run graphout...
+1. download the example [`graphout.example.json`](https://raw.githubusercontent.com/shamil/graphout/master/graphout.example.json) configuration, and save it file to `/etc/graphout/graphout.json`.
+2. change the configuration to meet your graphite settings, then you can run graphout.
+3. make sure the Example query will work on yhour environment, if not change it.
+4. *Now*, you can run **Graphout**
 
     # graphout --pid /tmp/graphout.pid --config /etc/graphout/graphout.json
 
 **Result**
 
-If all good, you should at least see data goes to a file (`/tmp/logoutput.log`) written
-by the `logoutput` module. If not, try to set `log_level` to `debug` in configuration or post your issues
+If all good, you should see data goes to a log file (`/tmp/logoutput.log`) written
+by the `logoutput` module. If not, try to set `log_level` to `debug` in configuration or post your issue(s)
 and I'll try to help you getting started.
 
 ### Configuration
