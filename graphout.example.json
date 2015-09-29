@@ -1,17 +1,23 @@
 /**
- * example config
+ * example Graphout configuration file
  */
 {
+    // graphite-web options
     "graphite_url": "http://graphite.example.com:8080",
     "graphite_auth": "user:password",
 
-    "log_file": "/var/log/graphout/graphout.log",
+    // log file options
+    "log_file": "/dev/stdout",
     "log_level": "info",
 
-    "interval": 60,     // query interval (in seconds)
-    "splay": false,     // delay each query by consistent random of seconds
-                        // if enabled, delay between 1 second and the query interval
+    // query interval (in seconds)
+    "interval": 60,
 
+    // delay each query by consistent random of seconds
+    // if enabled, delay between 1 second and the query interval
+    "splay": false,
+
+    // queries section
     "queries":
     {
         "go-carbon.updateOperations":
@@ -22,6 +28,7 @@
         }
     },
 
+    // outputs section
     "outputs":
     {
         "logfile":
@@ -33,5 +40,6 @@
         }
     },
 
+    // include external configs, shell globs supported
     "include": ["example*.json"]
 }

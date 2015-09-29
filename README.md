@@ -131,7 +131,7 @@ Available levels are: `error`, `warn`, `info` and  `debug`.
 **`splay`**
 
 Delay each query by consistent random of seconds.
-If enabled, delay between 1 second and the query interval.
+If enabled, delay between 1 second and the query interval. Default is `false`
 
 **`include`**
 
