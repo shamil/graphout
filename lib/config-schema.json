@@ -15,11 +15,11 @@
             "type": "integer"
         },
         "log_file": {
-            "type": "string",
-            "enum": ["error", "warn", "info", "debug"]
+            "type": "string"
         },
         "log_level": {
-            "type": "string"
+            "type": "string",
+            "enum": ["error", "warn", "info", "debug"]
         },
         "splay": {
             "type": "boolean"

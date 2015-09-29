@@ -14,7 +14,7 @@ argv = ParseArgs(process.argv.slice(2), {
 
 // print help & exit
 if (argv.help) {
-    console.log("usage:", process.title, "--config <config-path> --pid <pid-path>");
+    console.log("usage:", process.title, "--config <config-path> --pid <pid-path> [-v]");
     process.exit(0);
 }
 

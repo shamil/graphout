@@ -3,7 +3,7 @@
 Graphout lets you forward `Graphite` based queries (using the render API) out to different external services.
 
 ```
-The project still in ALPHA stage, be carefull when you use it in production!
+The project still in BETA stage, be carefull when you use it in production!
 Submit issues and/or suggestions. Pull requests are always welcome.
 ```
 
@@ -35,6 +35,33 @@ So, I decided that I need something that can answer the above questions.
 - Nice to have: add option in outputs configuration to filter queries
 - Nice to have: prepare a `puppet` module
 
+### Quick start guide
+
+**Install**
+
+    # npm install -g graphout
+
+**Usage**
+
+    # graphout --help
+    usage: graphout --config <config-path> --pid <pid-path>
+
+**Run**
+
+*First*, copy the example `graphout.example.json` configuration file to `/etc/graphout/graphout.json`.
+The example file, should be located in node `lib/node_modules/graphout` directory, relative to the 
+node's install root.
+
+*Second*, change the config to meet your graphite settings, then you can run graphout...
+
+    # graphout --pid /tmp/graphout.pid --config /etc/graphout/graphout.json
+
+**Result**
+
+If all good, you should at least see data goes to a file (`/tmp/logoutput.log`) written
+by the `logoutput` module. If not, try to set `log_level` to `debug` in configuration or post your issues
+and I'll try to help you getting started.
+
 ### Configuration
 
 Configuration is a typical `JSON` files, with one addition that you can have comemnts in it.
@@ -53,6 +80,7 @@ Read the [schema](https://raw.githubusercontent.com/shamil/graphout/master/lib/c
 ```json
 {
     "graphite_url": "http://graphite.example.com:8080",
+
     "queries":
     {
         "go-carbon.updateOperations":
@@ -118,7 +146,7 @@ Example:
 
 **`queries`**
 
-Queriy objects, accepted by the [Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html#json).
+Queriy objects, accepted by the [Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html).
 
 The format is:
 
@@ -161,14 +189,14 @@ Output objects. The format is:
     // ouput module name, Graphaut will use "require" to load the module
     "output": "./logoutput",
 
-    // "params" properties are dependant on the "output" type (module)
+    // "params" properties are dependant on the "output" module
     "params": {
         "path": "/tmp/logoutput.log"
     }
 }
 ```
 
-### Outputs
+### Outputs configuration
 
 Each output is a Node.js module. The only exception is a built-in `logoutput` output, which is part of this project.
 The other currently available outputs are `Zabbix` and `CloudWatch`, they are separate Node.js packages. Those outputs are dependencies
@@ -183,32 +211,24 @@ Other outputs documentation:
 - [Zabbix](https://github.com/shamil/graphout-output-zabbix) output
 - [CloudWatch](https://github.com/shamil/graphout-output-cloudwatch) output
 
-### How to install, and run?
+### Custom outputs
 
-**Install**
+Custom outputs are very easy to write. You just write a `function` that accepts 3 arguments. Inside your `function` you listen to upcoming events and process them as you desire.
+Just take a look at the [`logoutput`](https://raw.githubusercontent.com/shamil/graphout/master/lib/logoutput.js) output as an example.
 
-    # npm install -g graphout
+**Function arguments**
 
-**Usage**
+- **`events`** (EventEmitter), where all the events will be sent to.
+- **`logger`**, the logger where you can send your logs to.
+- **`params`**, the output params, all the params that were passed to your output (read above)
 
-    # graphout --help
-    usage: graphout --config <config-path> --pid <pid-path>
+**Available events**
 
-**Run**
+1. **`raw`**, a very first event which includes exactly same data as it was retrieved from Graphite, as Javascript Object.
+2. **`values`**, the values array of the query, which still not passed any calculation. (`null`s are ommited)
+3. **`result`**, the final calculated result, after calculation of `avg`, `min`, `max`. Depends what was requested in the query options.
+3. **`completed`**, a final event that just sent to indicate that the query was completed, no more events will be sent for that query.
 
-*First*, copy the example `graphout.example.json` configuration file to `/etc/graphout/graphout.json`.
-The example file, should be located in node `lib/node_modules/graphout` directory, relative to the 
-node's install root.
-
-*Second*, change the config to meet your graphite settings, then you can run graphout...
-
-    # graphout --pid /tmp/graphout.pid --config /etc/graphout/graphout.json
-
-**Result**
-
-If all good, you should at least see data goes to a file (`/tmp/logoutput.log`) written
-by the `logoutput` module. If not, try to set `log_level` to `debug` in configuration or post your issues
-and I'll try to help you getting started.
 
 ### Internal architecture
 
