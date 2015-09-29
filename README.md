@@ -225,11 +225,25 @@ Just take a look at the [`logoutput`](https://raw.githubusercontent.com/shamil/g
 
 **Available events**
 
-1. **`raw`**, a very first event which includes exactly same data as it was retrieved from Graphite, as Javascript Object.
-2. **`values`**, the values array of the query, which still not passed any calculation. (`null`s are ommited)
-3. **`result`**, the final calculated result, after calculation of `avg`, `min`, `max`. Depends what was requested in the query options.
-3. **`completed`**, a final event that just sent to indicate that the query was completed, no more events will be sent for that query.
+**`raw`**
 
+A very first event which includes exactly same data as it was retrieved from Graphite, as Javascript Object.
+Two arguments passed to the event, first is the `raw` data, second is the `query` options object.
+
+**`values`**
+
+The values array of the query, which still not passed any calculation. (`null`s are ommited)
+Two arguments passed to the event, first is the `values` array, second is the `query` options object.
+
+**`result`**
+
+The calculated result, after calculation of `avg`, `min` or `max`. Depends what was requested in the query options.
+Two arguments passed to the event, first is the `result` value, second is the `query` options object.
+
+**`completed`**
+
+The final event that just sent to indicate that the query was completed, no more events will be sent for that query.
+Only `query` options object get passed to this event.
 
 ### Internal architecture
 

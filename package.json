@@ -1,10 +1,11 @@
 {
   "author": "Alex Simenduev <shamil.si@gmail.com>",
   "description": "Graphout lets you forward graphite based queries (using the render API) out to different external services",
+  "keywords": ["graphite", "zabbix", "cloudwatch", "output", "metrics", "monitoring"],
   "license": "MIT",
   "name": "graphout",
   "repository": "shamil/graphout",
-  "version": "0.2.0",
+  "version": "0.2.1",
 
   "dependencies": {
     "bristol": "~0.3.2",
