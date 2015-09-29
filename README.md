@@ -26,14 +26,13 @@ So, I decided that I need something that can answer the above questions.
 - Log, Zabbix and CloudWatch outputs
 - New output modules very easy to write
 
-### TODO
+**TODO**
 
-- Complete README
-- Create Upstart and Systemd service scripts
 - Allow set interval per query
-- Write unit tests
-- Nice to have: add option in outputs configuration to filter queries
-- Nice to have: prepare a `puppet` module
+- Write unit tests (if you can help, I'll be glad)
+- Create Upstart and Systemd service scripts
+- *Upon request*: add option in outputs configuration to filter queries
+- *Nice to have*: prepare a `puppet` module
 
 ### Quick start guide
 
@@ -48,9 +47,9 @@ So, I decided that I need something that can answer the above questions.
 
 **Run**
 
-1. download the example [`graphout.example.json`](https://raw.githubusercontent.com/shamil/graphout/master/graphout.example.json) configuration, and save it file to `/etc/graphout/graphout.json`.
-2. change the configuration to meet your graphite settings, then you can run graphout.
-3. make sure the Example query will work on yhour environment, if not change it.
+1. download [example](https://raw.githubusercontent.com/shamil/graphout/master/graphout.example.json) configuration, and save it to `/etc/graphout/graphout.json`
+2. change the configuration to meet your graphite settings
+3. make sure the example query will work on your environment, if not change it
 4. *Now*, you can run **Graphout**
 
 ```shell
@@ -200,28 +199,29 @@ Output objects. The format is:
 ### Outputs configuration
 
 Each output is a Node.js module. The only exception is a built-in `logoutput` output, which is part of this project.
-The other currently available outputs are `Zabbix` and `CloudWatch`, they are separate Node.js packages. Those outputs are dependencies
+The other currently available outputs are `Zabbix` and `CloudWatch`, they are separate packages. Those outputs are dependencies
 of this project, so they're installed automatically when you install **Graphout**.
 
 **`logoutput`**
 
 The only param for this output is `path`, to the log file where all queries results will be written to.
 
-Other outputs documentation:
+More outputs documentation:
 
 - [Zabbix](https://github.com/shamil/graphout-output-zabbix) output
 - [CloudWatch](https://github.com/shamil/graphout-output-cloudwatch) output
 
 ### Custom outputs
 
-Custom outputs are very easy to write. You just write a `function` that accepts 3 arguments. Inside your `function` you listen to upcoming events and process them as you desire.
+Custom outputs are very easy to write. You just write a `function` that accepts **`3`** arguments.
+Inside your `function` you listen to upcoming events and process them as you desire.
 Just take a look at the [`logoutput`](https://raw.githubusercontent.com/shamil/graphout/master/lib/logoutput.js) output as an example.
 
 **Function arguments**
 
 - **`events`** (EventEmitter), where all the events will be sent to.
 - **`logger`**, the logger where you can send your logs to.
-- **`params`**, the output params, all the params that were passed to your output (read above)
+- **`params`**, the output params, all the params that were passed to the output module (read above about output `params`)
 
 **Available events**
 
@@ -233,7 +233,7 @@ Just take a look at the [`logoutput`](https://raw.githubusercontent.com/shamil/g
 
 ### Internal architecture
 
-![dagram](https://raw.githubusercontent.com/shamil/graphout/master/diagram.png)
+![diagram](https://raw.githubusercontent.com/shamil/graphout/master/diagram.png)
 
 ### License
 
