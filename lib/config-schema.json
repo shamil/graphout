@@ -82,12 +82,7 @@
     },
     "required": [
         "graphite_url",
-        "log_file",
-        "log_level",
-        "interval",
-        "splay",
         "queries",
-        "outputs",
-        "include"
+        "outputs"
     ]
 }

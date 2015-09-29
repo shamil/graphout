@@ -66,16 +66,16 @@ and I'll try to help you getting started.
 
 ### Configuration
 
-Configuration is a typical `JSON` files, with one addition that you can have comemnts in it.
+Configuration is a typical `JSON` file(s), with one addition that you can have comemnts in it.
 Also you can include configuration files from master config. See `include` option.
-The configuration file(s) validated using JSON schema, so invalid configuration properties will cause Graphout to exit immediately.
+The configuration file(s) validated using JSON schema, invalid configuration properties will cause Graphout to exit immediately.
 Read the [schema](https://raw.githubusercontent.com/shamil/graphout/master/lib/config-schema.json) for the accepted configuration format.
 
 **Minimal configuration**
 
 - `graphite_url` is mandatory
 - at least one `query` must be configured
-- at least one `output` mist be configured
+- at least one `output` must be configured
 
 **Example**
 
@@ -244,8 +244,8 @@ Two arguments passed to the event, first is the `result` value, second is the `q
 
 **`completed`**
 
-The final event that just sent to indicate that the query was completed, no more events will be sent for that query.
-Only `query` options object get passed to this event.
+The final event which sent to indicate that the query was completed, no more events will be sent for that query.
+Only `query` options object is passed to this event.
 
 ### Internal architecture
 
