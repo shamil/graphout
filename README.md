@@ -148,7 +148,7 @@ Example:
 
 **`queries`**
 
-Queriy objects, accepted by the [Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html).
+Query objects, accepted by the [Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html).
 
 The format is:
 
@@ -208,7 +208,7 @@ of this project, so they're installed automatically when you install **Graphout*
 
 The only param for this output is `path`, to the log file where all queries results will be written to.
 
-More outputs documentation:
+Other outputs docs:
 
 - [Zabbix](https://github.com/shamil/graphout-output-zabbix) output
 - [CloudWatch](https://github.com/shamil/graphout-output-cloudwatch) output
