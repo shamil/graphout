@@ -164,11 +164,6 @@ The format is:
 
     // relative or absolute time period
     "until": "now",
-
-    // the calculation method of the received Graphite data
-    // available methods: "avg", "min", "max"
-    // default: "avg"
-    "calculation": "avg"
 }
 ```
 
@@ -190,6 +185,11 @@ Output objects. The format is:
 {
     // ouput module name, Graphaut will use "require" to load the module
     "output": "./logoutput",
+
+    // the calculation method of the values received from Graphite
+    // available methods: "avg", "min", "max"
+    // default: "avg"
+    "calculation": "avg"
 
     // "params" properties are dependant on the "output" module
     "params": {
