@@ -30,6 +30,13 @@
             "patternProperties": {
                 "^[\\w.-]+$": {
                     "properties": {
+                        "calculation": {
+                            "type": "string",
+                            "enum": ["avg", "min", "max"]
+                        },
+                        "filter": {
+                            "type": "string"
+                        },
                         "output": {
                             "type": "string"
                         },
@@ -52,10 +59,6 @@
             "patternProperties": {
                 "^[\\w.-]+$": {
                     "properties": {
-                        "calculation": {
-                            "type": "string",
-                            "enum": ["avg", "min", "max"]
-                        },
                         "from": {
                             "type": "string"
                         },

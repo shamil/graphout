@@ -186,6 +186,10 @@ Output objects. The format is:
     // ouput module name, Graphaut will use "require" to load the module
     "output": "./logoutput",
 
+    // filter can be used to process only matched queries (using regular expression)
+    // default: all queries are processed by the outputs.
+    "filter": ".*",
+
     // the calculation method of the values received from Graphite
     // available methods: "avg", "min", "max"
     // default: "avg"
