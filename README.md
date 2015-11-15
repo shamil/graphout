@@ -24,7 +24,8 @@ So, I decided that I need something that can answer the above questions.
 
 - Can take any query from Graphite render API
 - HTTPS and HTTP basic authentication
-- Average, maximum and minimum calculation (per query)
+- Average, maximum and minimum calculation (per output)
+- Filter queries (per output)
 - Log, Zabbix and CloudWatch outputs
 - New output modules very easy to write
 
@@ -33,7 +34,6 @@ So, I decided that I need something that can answer the above questions.
 - Allow set interval per query
 - Write unit tests (if you can help, I'll be glad)
 - Create Upstart and Systemd service scripts
-- *Upon request*: add option in outputs configuration to filter queries
 - *Nice to have*: prepare a `puppet` module
 
 ### Quick start guide
@@ -66,7 +66,7 @@ and I'll try to help you getting started.
 
 ### Configuration
 
-Configuration is a typical `JSON` file(s), with one addition that you can have comemnts in it.
+Configuration is a typical `JSON` file(s), with one addition that you can have comments in it.
 Also you can include configuration files from master config. See `include` option.
 The configuration file(s) validated using JSON schema, invalid configuration properties will cause Graphout to exit immediately.
 Read the [schema](https://raw.githubusercontent.com/shamil/graphout/master/lib/config-schema.json) for the accepted configuration format.
@@ -195,7 +195,7 @@ Output objects. The format is:
     // default: "avg"
     "calculation": "avg"
 
-    // "params" properties are dependant on the "output" module
+    // "params" properties are specific to the "output" module
     "params": {
         "path": "/tmp/logoutput.log"
     }
@@ -245,11 +245,6 @@ Two arguments passed to the event, first is the `values` array, second is the `q
 
 The calculated result, after calculation of `avg`, `min` or `max`. Depends what was requested in the query options.
 Two arguments passed to the event, first is the `result` value, second is the `query` options object.
-
-**`completed`**
-
-The final event which sent to indicate that the query was completed, no more events will be sent for that query.
-Only `query` options object is passed to this event.
 
 ### Internal architecture
 
