@@ -48,6 +48,21 @@
                 }
             },
             "type": "object"
+        },
+        "queries": {
+            "additionalProperties": false,
+            "minProperties": 1,
+            "patternProperties": {
+                "^[\\w.-]+$": {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
         }
     },
     "required": [
