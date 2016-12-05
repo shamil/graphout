@@ -1,0 +1,31 @@
+{
+    "properties": {
+        "prometheus_url": {
+            "type": "string",
+            "format": "uri"
+        },
+        "prometheus_auth": {
+            "type": "string"
+        },
+        "queries": {
+            "additionalProperties": false,
+            "minProperties": 1,
+            "patternProperties": {
+                "^[\\w.-]+$": {
+                    "properties": {
+                        "query": {
+                            "type": "string"
+                        },
+                        "time": {
+                            "type": "string"
+                        }
+                    },
+                    "required": ["query"],
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "required": ["prometheus_url"]
+}
