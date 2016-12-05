@@ -1,0 +1,38 @@
+{
+    "properties": {
+        "graphite_url": {
+            "type": "string",
+            "format": "uri"
+        },
+        "graphite_auth": {
+            "type": "string"
+        },
+        "queries": {
+            "additionalProperties": false,
+            "minProperties": 1,
+            "patternProperties": {
+                "^[\\w.-]+$": {
+                    "properties": {
+                        "from": {
+                            "type": "string"
+                        },
+                        "query": {
+                            "type": "string"
+                        },
+                        "until": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "query",
+                        "from",
+                        "until"
+                    ],
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "required": ["graphite_url"]
+}
