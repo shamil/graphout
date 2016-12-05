@@ -28,12 +28,14 @@ So, I decided that I need something that can answer the above questions.
 - Filter queries (per output)
 - Log, Zabbix and CloudWatch outputs
 - New output modules very easy to write
+- **New**, support for Prometheus as query source
 
 **TODO**
 
 - Allow set interval per query
 - Write unit tests (if you can help, I'll be glad)
 - Create Upstart and Systemd service scripts
+- Create Docker image
 - *Nice to have*: prepare a `puppet` module
 
 ### Quick start guide
@@ -71,7 +73,15 @@ Also you can include configuration files from master config. See `include` optio
 The configuration file(s) validated using JSON schema, invalid configuration properties will cause Graphout to exit immediately.
 Read the [schema](https://raw.githubusercontent.com/shamil/graphout/master/lib/config-schema.json) for the accepted configuration format.
 
+**Query engines**
+
+Starting from Graphout version `0.4.0`, there is support for query engines. Which allows to use query source other than `graphite`. Currently `prometheus` query engine supported in addition to `graphite`.
+
+Graphout allows to use single query engine per configuration. Which means you can't use `graphite` and `prometheus` together. Thus you have to specify which query engine you wan to use. By default assumed `graphite`.
+
 **Minimal configuration**
+
+>Note: by default Graphout uses `graphite` query engine.
 
 - `graphite_url` is mandatory
 - at least one `query` must be configured
@@ -108,13 +118,17 @@ Read the [schema](https://raw.githubusercontent.com/shamil/graphout/master/lib/c
 
 **Available configuration options**
 
-**`graphite_url`**
+**`query_engine`**
 
-URL to the graphite-web. The option must conform to the `URI` format.
+Which query engine to use when executing queries, one of `graphite` or `prometheus`, default is `graphite`.
 
-**`graphite_auth`**
+**`graphite_url`/`prometheus_url`**
 
-HTTP basic authentication option in `<username>:<password>` format
+URL to the graphite-web or prometheus-api. The option must conform to the `URI` format.
+
+**`graphite_auth`/`prometheus_auth`**
+
+HTTP basic authentication option in `<username>:<password>` format, optional.
 
 **`interval`**
 
@@ -148,9 +162,9 @@ Example:
 
 **`queries`**
 
-Query objects, accepted by the [Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html).
+Query objects, for `graphite` or `prometheus`.
 
-The format is:
+For `graphite`, the format is:
 
 ```javascript
 // Alphanumeric unique query name, with dots and hyphens allowed.
@@ -168,11 +182,28 @@ The format is:
 ```
 
 For more information about the `query` (target), `from` and `until` options, read the
-[Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html) manual. 
+[Graphite Render URL API](http://graphite.readthedocs.org/en/latest/render_api.html) manual.
 
 Note that, Graphout uses the [**`maxDataPoints`**](http://graphite.readthedocs.org/en/latest/render_api.html#maxdatapoints) API option,
-to return `60` consolidated data points at most. The `maxDataPoints` option available since Graphite 0.9.13.
+to return `60` consolidated data points at most. The `maxDataPoints` option available since Graphite `0.9.13`.
 So it's best that you have the latest version of `graphite-web`.
+
+For `promethes`, the format is:
+
+```javascript
+// Alphanumeric unique query name, with dots and hyphens allowed.
+"prometheus_cpu.5m.avg":
+{
+    // the prometheus instant-query
+    "query": "sum(irate(node_cpu{role='prometheus', mode!='idle'}[5m])) * 100",
+
+    // time=<rfc3339 | unix_timestamp>: evaluation timestamp, optional.
+    "time": ""
+}
+```
+
+For more information about the `query` (instant-query) and the `time` options, read the
+[Prometheus HTTP API](https://prometheus.io/docs/querying/api/#instant-queries) manual. Currently Graphout supports only `vector` result types. Open feature request, if you need the `range` type as well.
 
 **`outputs`**
 
