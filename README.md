@@ -26,13 +26,13 @@ So, I decided that I need something that can answer the above questions.
 - Log, Zabbix and CloudWatch outputs
 - New output modules very easy to write
 - **New**, support for Prometheus as query source
+- Docker [image](https://hub.docker.com/r/simenduev/graphout) available in the DockerHub
 
 **TODO**
 
 - Allow set interval per query
 - Write unit tests (if you can help, I'll be glad)
 - Create Upstart and Systemd service scripts
-- Create Docker image
 - *Nice to have*: prepare a `puppet` module
 
 ```
