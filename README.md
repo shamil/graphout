@@ -2,17 +2,12 @@
 
 ### What is Graphout
 
-Graphout lets you forward `Graphite` based queries (using the render API) out to different external services.
-
-```
-The project still in BETA stage, be carefull when you use it in production!
-Submit issues and/or suggestions. Pull requests are always welcome.
-```
+Graphout lets you query `graphite` or `prometheus`, then forward the results to different external services.
 
 ### Why?
 
 Graphite collects metrics, this is very cool, but how can I make use of these metrics? And not just
-for visualising them. What if I have a central monitoring system like `Zabbix`, that responsible to
+for visualizing them. What if I have a central monitoring system like `Zabbix`, that responsible to
 send alerts, and I want to alert based on `Graphite` data? Or what if I want to do AWS Auto-scaling
 based on graphite data? How can I get this data into CloudWatch? I'm sure you have your own reasons
 to get this data out of Graphite to some external tool or service.
@@ -37,6 +32,11 @@ So, I decided that I need something that can answer the above questions.
 - Create Upstart and Systemd service scripts
 - Create Docker image
 - *Nice to have*: prepare a `puppet` module
+
+```
+The project considered BETA, but everything should work and tested on my environment.
+Submit issues and/or suggestions. Pull requests are always welcome.
+```
 
 ### Quick start guide
 
@@ -77,7 +77,7 @@ Read the [schema](https://raw.githubusercontent.com/shamil/graphout/master/lib/c
 
 Starting from Graphout version `0.4.0`, there is support for query engines. Which allows to use query source other than `graphite`. Currently `prometheus` query engine supported in addition to `graphite`.
 
-Graphout allows to use single query engine per configuration. Which means you can't use `graphite` and `prometheus` together. Thus you have to specify which query engine you wan to use. By default assumed `graphite`.
+Graphout allows to use single query engine per configuration. Which means you can't use `graphite` and `prometheus` together. Thus you have to specify which query engine you wan to use.
 
 **Minimal configuration**
 
@@ -188,7 +188,7 @@ Note that, Graphout uses the [**`maxDataPoints`**](http://graphite.readthedocs.o
 to return `60` consolidated data points at most. The `maxDataPoints` option available since Graphite `0.9.13`.
 So it's best that you have the latest version of `graphite-web`.
 
-For `promethes`, the format is:
+For `prometheus`, the format is:
 
 ```javascript
 // Alphanumeric unique query name, with dots and hyphens allowed.
@@ -203,7 +203,7 @@ For `promethes`, the format is:
 ```
 
 For more information about the `query` (instant-query) and the `time` options, read the
-[Prometheus HTTP API](https://prometheus.io/docs/querying/api/#instant-queries) manual. Currently Graphout supports only `vector` result types. Open feature request, if you need the `range` type as well.
+[Prometheus HTTP API](https://prometheus.io/docs/querying/api/#instant-queries) manual. Currently Graphout supports only `vector` result types. Open feature request, if you need the `matrix` type as well.
 
 **`outputs`**
 
@@ -258,18 +258,18 @@ Just take a look at the [`logoutput`](https://raw.githubusercontent.com/shamil/g
 
 - **`events`** (EventEmitter), where all the events will be sent to.
 - **`logger`**, the logger where you can send your logs to.
-- **`params`**, the output params, all the params that were passed to the output module (read above about output `params`)
+- **`params`**, the output parameters, all the parameters that were passed to the output module (read above about output `params`)
 
 **Available events**
 
 **`raw`**
 
-A very first event which includes exactly same data as it was retrieved from Graphite, as Javascript Object.
+A very first event which includes exactly same data as it was retrieved from Graphite, as JavaScript Object.
 Two arguments passed to the event, first is the `raw` data, second is the `query` options object.
 
 **`values`**
 
-The values array of the query, which still not passed any calculation. (`null`s are ommited)
+The values array of the query, which still not passed any calculation. (`null`s are omitted)
 Two arguments passed to the event, first is the `values` array, second is the `query` options object.
 
 **`result`**
