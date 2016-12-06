@@ -236,7 +236,7 @@ Output objects. The format is:
 ### Outputs configuration
 
 Each output is a Node.js module. The only exception is a built-in `logoutput` output, which is part of this project.
-The other currently available outputs are `Zabbix` and `CloudWatch`, they are separate packages. Those outputs are dependencies
+The other currently available outputs are `CloudWatch`, `Statuspage.io` and `Zabbix` they are separate packages. Those outputs are dependencies
 of this project, so they're installed automatically when you install **Graphout**.
 
 **`logoutput`**
@@ -245,8 +245,9 @@ The only param for this output is `path`, to the log file where all queries resu
 
 Other outputs docs:
 
-- [Zabbix](https://github.com/shamil/graphout-output-zabbix) output
 - [CloudWatch](https://github.com/shamil/graphout-output-cloudwatch) output
+- [StatusPage.io](https://github.com/shamil/graphout-output-cloudwatch) output
+- [Zabbix](https://github.com/shamil/graphout-output-statuspage-io) output
 
 ### Custom outputs
 
