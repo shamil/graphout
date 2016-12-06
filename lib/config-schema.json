@@ -57,6 +57,9 @@
                     "properties": {
                         "name": {
                             "type": "string"
+                        },
+                        "tags": {
+                            "type": "array"
                         }
                     },
                     "type": "object"

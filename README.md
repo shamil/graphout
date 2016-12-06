@@ -2,9 +2,11 @@
 
 ### What is Graphout
 
+---
+
 Graphout lets you query `graphite` or `prometheus`, then forward the results to different external services.
 
-### Why?
+**Why?**
 
 Graphite collects metrics, this is very cool, but how can I make use of these metrics? And not just
 for visualizing them. What if I have a central monitoring system like `Zabbix`, that responsible to
@@ -243,11 +245,11 @@ of this project, so they're installed automatically when you install **Graphout*
 
 The only param for this output is `path`, to the log file where all queries results will be written to.
 
-Other outputs docs:
+Read the documentaion of supported outputs:
 
 - [CloudWatch](https://github.com/shamil/graphout-output-cloudwatch) output
-- [StatusPage.io](https://github.com/shamil/graphout-output-cloudwatch) output
-- [Zabbix](https://github.com/shamil/graphout-output-statuspage-io) output
+- [StatusPage.io](https://github.com/shamil/graphout-output-statuspage-io) output
+- [Zabbix](https://github.com/shamil/graphout-output-zabbix) output
 
 ### Custom outputs
 
