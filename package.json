@@ -5,14 +5,14 @@
   "license": "MIT",
   "name": "graphout",
   "repository": "shamil/graphout",
-  "version": "0.5.2",
+  "version": "0.5.3",
 
   "dependencies": {
     "bristol": "~0.3.3",
     "cjson": "~0.4.0",
     "glob": "~7.1.1",
     "graphout-output-cloudwatch": "~0.1.1",
-    "graphout-output-statuspage-io": "~1.0.1",
+    "graphout-output-statuspage-io": "~1.0.4",
     "graphout-output-zabbix": "~0.1.4",
     "jsonschema": "~1.1.0",
     "minimist": "~1.2.0"

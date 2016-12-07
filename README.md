@@ -2,9 +2,12 @@
 
 ### What is Graphout
 
----
-
 Graphout lets you query `graphite` or `prometheus`, then forward the results to different external services.
+
+```
+The project considered BETA, however everything should work. It was tested on my environment.
+Submit issues and/or suggestions. Pull requests are always welcome.
+```
 
 **Why?**
 
@@ -34,11 +37,6 @@ So, I decided that I need something that can answer the above questions.
 - Write unit tests (if you can help, I'll be glad)
 - Create Upstart and Systemd service scripts
 - *Nice to have*: prepare a `puppet` module
-
-```
-The project considered BETA, but everything should work and tested on my environment.
-Submit issues and/or suggestions. Pull requests are always welcome.
-```
 
 ### Quick start guide
 
@@ -223,7 +221,7 @@ Output objects. The format is:
     // default: all queries are processed by the outputs.
     "filter": ".*",
 
-    // the calculation method of the values received from Graphite
+    // the calculation method of the values received from query_engine
     // available methods: "avg", "min", "max"
     // default: "avg"
     "calculation": "avg"
@@ -267,7 +265,7 @@ Just take a look at the [`logoutput`](https://raw.githubusercontent.com/shamil/g
 
 **`raw`**
 
-A very first event which includes exactly same data as it was retrieved from Graphite, as JavaScript Object.
+A very first event which includes exactly same data as it was retrieved from the `query_engine`, as JavaScript Object.
 Two arguments passed to the event, first is the `raw` data, second is the `query` options object.
 
 **`values`**
