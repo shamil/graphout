@@ -1,11 +1,11 @@
 {
   "author": "Alex Simenduev <shamil.si@gmail.com>",
-  "description": "Graphout lets you query Graphite or Prometheus, then forward the results to different external services",
-  "keywords": ["graphite", "prometheus", "zabbix", "cloudwatch", "output", "metrics", "monitoring", "statuspage.io"],
+  "description": "Forward Graphite or Prometheus queries to external services.",
+  "keywords": ["graphite", "prometheus", "zabbix", "cloudwatch", "metrics", "monitoring", "statuspage.io"],
   "license": "MIT",
   "name": "graphout",
   "repository": "shamil/graphout",
-  "version": "0.5.3",
+  "version": "0.5.6",
 
   "dependencies": {
     "bristol": "~0.3.3",

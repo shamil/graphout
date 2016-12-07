@@ -2,12 +2,9 @@
 
 ### What is Graphout
 
-Graphout lets you query `graphite` or `prometheus`, then forward the results to different external services.
+Graphout lets you query `graphite` or `prometheus`, then forward the results to different external services. Like Zabbix or StatusPage.io custom metrics.
 
-```
-The project considered BETA, however everything should work. It was tested on my environment.
-Submit issues and/or suggestions. Pull requests are always welcome.
-```
+> The project considered BETA, however everything should work. Submit issues and/or suggestions. Pull requests are always welcome.
 
 **Why?**
 
@@ -17,8 +14,7 @@ send alerts, and I want to alert based on `Graphite` data? Or what if I want to 
 based on graphite data? How can I get this data into CloudWatch? I'm sure you have your own reasons
 to get this data out of Graphite to some external tool or service.
 
-So, I decided that I need something that can answer the above questions.
-**This is how Graphout was started.**
+So, I decided that I need something that can answer the above questions. This is how Graphout was started. :muscle:
 
 ### Features
 
@@ -26,15 +22,15 @@ So, I decided that I need something that can answer the above questions.
 - HTTPS and HTTP basic authentication
 - Average, maximum and minimum calculation (per output)
 - Filter queries (per output)
-- Log, Zabbix and CloudWatch outputs
+- Log, Zabbix, CloudWatch and StatusPage.io outputs
 - New output modules very easy to write
 - **New**, support for Prometheus as query source
 - Docker [image](https://hub.docker.com/r/simenduev/graphout) available in the DockerHub
 
-**TODO**
+**Future work**
 
 - Allow set interval per query
-- Write unit tests (if you can help, I'll be glad)
+- Write unit tests (help needed)
 - Create Upstart and Systemd service scripts
 - *Nice to have*: prepare a `puppet` module
 
@@ -243,7 +239,7 @@ of this project, so they're installed automatically when you install **Graphout*
 
 The only param for this output is `path`, to the log file where all queries results will be written to.
 
-Read the documentaion of supported outputs:
+Documentaion of supported outputs:
 
 - [CloudWatch](https://github.com/shamil/graphout-output-cloudwatch) output
 - [StatusPage.io](https://github.com/shamil/graphout-output-statuspage-io) output
