@@ -73,7 +73,7 @@ Read the [schema](https://raw.githubusercontent.com/shamil/graphout/master/lib/c
 
 Starting from Graphout version `0.4.0`, there is support for query engines. Which allows to use query source other than `graphite`. Currently `prometheus` query engine supported in addition to `graphite`.
 
-Graphout allows to use single query engine per configuration. Which means you can't use `graphite` and `prometheus` together. Thus you have to specify which query engine you wan to use.
+Graphout allows to use single query engine per configuration. Which means you can't use `graphite` and `prometheus` together. Thus you have to specify which query engine you want to use.
 
 **Minimal configuration**
 
