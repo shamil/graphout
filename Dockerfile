@@ -7,4 +7,4 @@ RUN apk --no-cache add tini && \
 
 # configure container environment
 VOLUME ["/etc/graphout"]
-ENTRYPOINT ["/sbin/tini", "--", "/usr/bin/graphout"]
+ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/graphout"]
