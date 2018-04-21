@@ -13,7 +13,7 @@
   "license": "MIT",
   "name": "graphout",
   "repository": "shamil/graphout",
-  "version": "0.5.8",
+  "version": "0.5.10",
   "dependencies": {
     "bristol": "~0.4.0",
     "cjson": "~0.5.0",
