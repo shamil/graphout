@@ -1,4 +1,5 @@
-FROM mhart/alpine-node:4.7
+FROM node:8-alpine
+LABEL maintainer "Alex Simenduev <shamil.si@gmail.com>"
 
 # install graphout
 RUN apk --no-cache add tini && \
