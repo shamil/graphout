@@ -17,7 +17,7 @@
   "dependencies": {
     "bristol": "~0.4.0",
     "cjson": "~0.5.0",
-    "glob": "^8.0.3",
+    "glob": "^9.3.2",
     "graphout-output-cloudwatch": "0.2.x",
     "graphout-output-statuspage-io": "^1.0.5",
     "graphout-output-zabbix": "^0.1.5",
