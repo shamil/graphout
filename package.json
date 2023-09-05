@@ -18,7 +18,7 @@
     "bristol": "~0.4.0",
     "cjson": "~0.5.0",
     "glob": "^8.0.3",
-    "graphout-output-cloudwatch": "0.2.x",
+    "graphout-output-cloudwatch": "0.3.x",
     "graphout-output-statuspage-io": "^1.0.5",
     "graphout-output-zabbix": "^0.1.5",
     "jsonschema": "~1.4.0",
