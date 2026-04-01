@@ -21,7 +21,7 @@
     "graphout-output-cloudwatch": "0.3.x",
     "graphout-output-statuspage-io": "^1.0.5",
     "graphout-output-zabbix": "^0.1.5",
-    "jsonschema": "~1.4.0",
+    "jsonschema": "~1.5.0",
     "minimist": "~1.2.0"
   },
   "devDependencies": {},
